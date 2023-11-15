@@ -147,7 +147,7 @@ public:
 };
 //---------------------------------------------------------------------------------------------------------------------------------
 int main() {
-    std::vector<Instruction> program = {
+    vector<Instruction> program = {
             Instruction(0, 0, 10),    // Example: LOAD R0 with the value at memory location 10
             Instruction(3, 0, 0)      // Example: HALT
     };
