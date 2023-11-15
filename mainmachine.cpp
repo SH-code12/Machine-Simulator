@@ -11,7 +11,7 @@ int main()
     while(true){
         cout<< "enter the number of the opration";
         
-        cout<<"1-load a progrm from a file\n2-display screen\n3-display memory\n4-display registers\n5-run til halt\n6-run one cycle\n0-exit";
+        cout<<"1-load a progrm from a file\n2-display screen\n3-display memory\n4-display registers\n5-run til halt\n6-run one cycle\n0-exit\n";
         cout<<"number of the opration: ";
         cin>>opration;
         if (opration < 0 || opration > 6) continue;
