@@ -1,4 +1,8 @@
-
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+#include <string>
+using namespace std;
 class memory
 {
 public:
@@ -9,24 +13,32 @@ public:
     string hexaValue()const;
     int twosComplementValue() const;
 
-    ~memory();
+    // ~memory();
 protected :
     int value=0;
 };
-class register:public memory
+class Register:public memory
 {
 
 public:
     bool operator==(const memory &rhs) const;
     bool operator!=(const memory &rhs) const;
-    Register operator=(const memory &rhs);
+    Register& operator=(const memory &rhs);
+    
+};
+class ArthmeticUnit
+{
+public:
+    
+    int add_int(int val1, int val2);
     
 };
 class machine
 {
 private:
+    ArthmeticUnit *AU;
     memory *mem;
-    register *reg;
+    Register *reg;
     int progCount,regCount,memSize;
     bool halt;
     string screen;
@@ -36,26 +48,25 @@ private:
     void three(string ins);
     void four(string ins);
     void five(string ins);
-    void six(string ins);
     void seven(string ins);
 
 public:
-    machine(int memSize=256,int regC=16);
+    machine(int mem_size,int reg_count);
     int regisCount();
     int memorySize();
     bool runOneCycle();
     string sceenContent();
-    Memory &memIndex(int index);
+    memory &memIndex(int index);
     Register &registerIndex(int index);
     void reset();
     bool halted();
-    ~machine();
+    // ~machine();
 };
 
-string decemalToBase(int val,int base);
-int baseToDecemal(string value, int base);
-int baseToDecemal(char c);
 
+string decemalToBase(int val,int base);
+int baseToDecemal(string val,int base);
+int baseToDecemal(char x);
 
 
 
