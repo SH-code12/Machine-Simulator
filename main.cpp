@@ -27,6 +27,10 @@ private:
 public:
     Memory(int size) : cells(size, 0) {}
 
+    ~Memory() {
+        delete[] cells; // Cleanup for dynamically allocated memory
+    }
+
     int read(int address) const {
         if (address >= 0 && address < cells.size()) {
             return cells[address];
@@ -112,7 +116,12 @@ private:
 
 public:
     Machine() : memory(256), programCounter(0) {}
+    
+    ~Machine() {
+        delete memory; // Cleanup for dynamically allocated memory
+    }
 
+    
     void loadProgram(const vector<Instruction>& program) {
         for (size_t i = 0; i < program.size(); ++i) {
             memory.write(i, encodeInstruction(program[i]));
